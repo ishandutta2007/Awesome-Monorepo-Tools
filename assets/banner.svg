@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="360" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1a" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#070b14" />
+    </linearGradient>
+
+    <!-- Glowing Text Gradient -->
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+
+    <!-- Line & Node Gradients -->
+    <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.2" />
+    </linearGradient>
+
+    <linearGradient id="lineGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c084fc" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.2" />
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <style>
+      /* Dynamic Keyframe Animations */
+      @keyframes dashFlow {
+        0% { stroke-dashoffset: 80; }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 0.35; transform: scale(1); }
+        50% { opacity: 0.75; transform: scale(1.08); }
+      }
+      @keyframes floatSlow1 {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-8px) rotate(1deg); }
+      }
+      @keyframes floatSlow2 {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(7px) rotate(-1deg); }
+      }
+      @keyframes nodePulse {
+        0%, 100% { r: 6; opacity: 0.8; }
+        50% { r: 9; opacity: 1; }
+      }
+
+      .dash-anim-1 {
+        stroke-dasharray: 6 6;
+        animation: dashFlow 2.8s linear infinite;
+      }
+      .dash-anim-2 {
+        stroke-dasharray: 8 6;
+        animation: dashFlow 3.6s linear reverse infinite;
+      }
+      .bg-orb-1 {
+        animation: pulseGlow 6s ease-in-out infinite;
+        transform-origin: 200px 180px;
+      }
+      .bg-orb-2 {
+        animation: pulseGlow 7s ease-in-out infinite 1s;
+        transform-origin: 1000px 180px;
+      }
+      .pill-float-1 {
+        animation: floatSlow1 5s ease-in-out infinite;
+      }
+      .pill-float-2 {
+        animation: floatSlow2 6s ease-in-out infinite 0.5s;
+      }
+      .node-pulse-1 {
+        animation: nodePulse 3s ease-in-out infinite;
+      }
+      .node-pulse-2 {
+        animation: nodePulse 3.5s ease-in-out infinite 0.8s;
+      }
+      .node-pulse-3 {
+        animation: nodePulse 4s ease-in-out infinite 1.5s;
+      }
+    </style>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="360" rx="16" fill="url(#bgGrad)" />
+
+  <!-- Subtle Grid Lines (Architectural Monorepo Feel) -->
+  <g opacity="0.08" stroke="#38bdf8" stroke-width="1">
+    <line x1="0" y1="60" x2="1200" y2="60" />
+    <line x1="0" y1="120" x2="1200" y2="120" />
+    <line x1="0" y1="180" x2="1200" y2="180" />
+    <line x1="0" y1="240" x2="1200" y2="240" />
+    <line x1="0" y1="300" x2="1200" y2="300" />
+    <line x1="150" y1="0" x2="150" y2="360" />
+    <line x1="300" y1="0" x2="300" y2="360" />
+    <line x1="450" y1="0" x2="450" y2="360" />
+    <line x1="600" y1="0" x2="600" y2="360" />
+    <line x1="750" y1="0" x2="750" y2="360" />
+    <line x1="900" y1="0" x2="900" y2="360" />
+    <line x1="1050" y1="0" x2="1050" y2="360" />
+  </g>
+
+  <!-- Ambient Dynamic Glowing Orbs in Background -->
+  <circle class="bg-orb-1" cx="220" cy="180" r="140" fill="#38bdf8" opacity="0.12" filter="url(#glow)" />
+  <circle class="bg-orb-2" cx="980" cy="180" r="160" fill="#818cf8" opacity="0.12" filter="url(#glow)" />
+
+  <!-- Background Animated Monorepo Dependency Graph (Left Wing) -->
+  <g opacity="0.45">
+    <path class="dash-anim-1" d="M 60 80 Q 140 130 200 90 T 260 170" fill="none" stroke="url(#lineGrad1)" stroke-width="2" />
+    <path class="dash-anim-2" d="M 100 280 Q 160 210 220 270 T 300 200" fill="none" stroke="url(#lineGrad2)" stroke-width="2" />
+    <path class="dash-anim-1" d="M 40 180 L 160 180 L 220 270" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4 4" />
+    <!-- Graph Nodes -->
+    <circle cx="60" cy="80" r="5" fill="#38bdf8" />
+    <circle cx="200" cy="90" r="7" fill="#818cf8" class="node-pulse-1" filter="url(#softGlow)" />
+    <circle cx="260" cy="170" r="5" fill="#c084fc" />
+    <circle cx="100" cy="280" r="6" fill="#38bdf8" class="node-pulse-2" />
+    <circle cx="220" cy="270" r="7" fill="#818cf8" filter="url(#softGlow)" />
+    <circle cx="300" cy="200" r="5" fill="#c084fc" />
+    <circle cx="40" cy="180" r="4" fill="#64748b" />
+    <circle cx="160" cy="180" r="6" fill="#38bdf8" class="node-pulse-3" />
+  </g>
+
+  <!-- Background Animated Monorepo Dependency Graph (Right Wing) -->
+  <g opacity="0.45">
+    <path class="dash-anim-1" d="M 940 170 Q 1000 90 1060 130 T 1140 80" fill="none" stroke="url(#lineGrad1)" stroke-width="2" />
+    <path class="dash-anim-2" d="M 900 200 Q 980 270 1040 210 T 1100 280" fill="none" stroke="url(#lineGrad2)" stroke-width="2" />
+    <path class="dash-anim-1" d="M 980 270 L 1040 180 L 1160 180" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-dasharray="4 4" />
+    <!-- Graph Nodes -->
+    <circle cx="940" cy="170" r="5" fill="#c084fc" />
+    <circle cx="1060" cy="130" r="7" fill="#818cf8" class="node-pulse-2" filter="url(#softGlow)" />
+    <circle cx="1140" cy="80" r="5" fill="#38bdf8" />
+    <circle cx="900" cy="200" r="5" fill="#c084fc" />
+    <circle cx="1040" cy="210" r="7" fill="#818cf8" class="node-pulse-1" filter="url(#softGlow)" />
+    <circle cx="1100" cy="280" r="6" fill="#38bdf8" />
+    <circle cx="980" cy="270" r="6" fill="#38bdf8" />
+    <circle cx="1160" cy="180" r="4" fill="#64748b" />
+  </g>
+
+  <!-- Floating Dynamic Feature Pills (Behind Central Foreground Text) -->
+  <g class="pill-float-1" opacity="0.75">
+    <g transform="translate(110, 42)">
+      <rect width="138" height="28" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+      <text x="69" y="18" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle">⚡ Remote Cache</text>
+    </g>
+    <g transform="translate(950, 42)">
+      <rect width="142" height="28" rx="14" fill="#1e293b" stroke="#818cf8" stroke-width="1" />
+      <text x="71" y="18" fill="#818cf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle">🌿 Task Graphs</text>
+    </g>
+  </g>
+
+  <g class="pill-float-2" opacity="0.75">
+    <g transform="translate(90, 296)">
+      <rect width="150" height="28" rx="14" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+      <text x="75" y="18" fill="#c084fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle">🚀 Distributed CI</text>
+    </g>
+    <g transform="translate(960, 296)">
+      <rect width="144" height="28" rx="14" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+      <text x="72" y="18" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle">🛡️ Governance</text>
+    </g>
+  </g>
+
+  <!-- FOREGROUND: High Contrast Backplate for Maximum Readability -->
+  <!-- Guaranteed Foreground Protection: Nothing obscures the text -->
+  <g>
+    <!-- Radial Dark Backdrop behind Text Center to keep text 100% crisp & isolated -->
+    <rect x="250" y="60" width="700" height="240" rx="24" fill="#0b1120" fill-opacity="0.82" stroke="#1e293b" stroke-width="1" filter="url(#softGlow)" />
+
+    <!-- Top Badge / Category Marker -->
+    <rect x="500" y="80" width="200" height="26" rx="13" fill="#1e1b4b" stroke="#6366f1" stroke-width="1" />
+    <text x="600" y="97" fill="#a5b4fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" letter-spacing="1.2" text-anchor="middle">ENTERPRISE ECOSYSTEM</text>
+
+    <!-- Main Title -->
+    <text x="600" y="152" fill="url(#titleGrad)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="38" font-weight="900" letter-spacing="-0.5" text-anchor="middle" filter="url(#softGlow)">
+      AWESOME MONOREPO TOOLS
+    </text>
+
+    <!-- Subtitle -->
+    <text x="600" y="190" fill="#e2e8f0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="16" font-weight="500" text-anchor="middle">
+      Task Graph Orchestration • Remote Caching • Distributed CI • Dependency Governance
+    </text>
+
+    <!-- Tagline & Core Frameworks -->
+    <text x="600" y="222" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="400" text-anchor="middle">
+      Nx • Turborepo • Bazel • Rush • Lerna • Bit • Buck2 • Pants • Moon • Verdaccio
+    </text>
+
+    <!-- Mini Bottom Feature Badges -->
+    <g transform="translate(380, 246)">
+      <rect x="0" y="0" width="130" height="24" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+      <text x="65" y="16" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" text-anchor="middle">⚡ Ultra-Fast Builds</text>
+
+      <rect x="150" y="0" width="140" height="24" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+      <text x="70" y="16" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" text-anchor="middle">🌐 Cloud &amp; Self-Hosted</text>
+
+      <rect x="310" y="0" width="130" height="24" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+      <text x="65" y="16" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" text-anchor="middle">📦 Multi-Language</text>
+    </g>
+  </g>
+</svg>
